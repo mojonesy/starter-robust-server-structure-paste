@@ -1,12 +1,13 @@
 const express = require("express");
 const app = express();
-const pastes = require("./data/pastes-data");
+const usersRouter = require("./users/users.router");
 const pastesRouter = require("./pastes/pastes.router");
 
 // Built-in middleware that adds a body property to the request (req.body)
 /* This must come before any handlers that use the JSON in the body request */
 app.use(express.json());
  
+app.use("/users", usersRouter);
 app.use("/pastes", pastesRouter); // Note: app.use
 
 // Not found handler
